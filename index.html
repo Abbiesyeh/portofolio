@@ -31,17 +31,6 @@
   padding-bottom:env(safe-area-inset-bottom,0px);
   color-scheme:dark;
 }
-@media (prefers-color-scheme:light){
-  :root:not([data-theme="dark"]){
-    --bg:#FAF8F6;--bg-2:#FFFFFF;
-    --card:rgba(16,12,8,.030);--card-2:rgba(16,12,8,.055);
-    --line:rgba(16,12,8,.11);--line-2:rgba(16,12,8,.20);
-    --text:#121110;--muted:#5D5B58;--faint:#8B8985;
-    --acc:#D9550F;--acc-2:#F4712B;--glow:rgba(217,85,15,.16);
-    --ops:#D9550F;--ana:#12857C;
-    color-scheme:light;
-  }
-}
 :root[data-theme="light"]{
   --bg:#FAF8F6;--bg-2:#FFFFFF;
   --card:rgba(16,12,8,.030);--card-2:rgba(16,12,8,.055);
@@ -776,7 +765,7 @@ function apply(m){document.documentElement.setAttribute("data-theme",m);
   btn.setAttribute("aria-label",m==="dark"?"Switch to light theme":"Switch to dark theme");}
 var stored=null;try{stored=localStorage.getItem("abbie-theme");}catch(e){stored=null;}
 if(stored==="dark"||stored==="light")apply(stored);
-else apply(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
+else apply("dark");
 btn.addEventListener("click",function(){
   var n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";
   apply(n);try{localStorage.setItem("abbie-theme",n);}catch(e){}
